@@ -9,8 +9,8 @@
 // Created by 高井康彬 on 2014.03.05
 // -------------------------------------------------------
 
-using UnityEngine;
 using System.Collections;
+using UnityEngine;
 
 public class PlayManager : MonoBehaviour {
 
@@ -29,28 +29,36 @@ public class PlayManager : MonoBehaviour {
         get { return this.seq; }
     }
 
-    public float world_speed = 1.0f;            // 世界全体のスピード
+    [SerializeField]
+    private float world_speed = 0.0f;            // 世界全体のスピード
+
+    // 世界全体のスピードのプロパティ
+    public float WorldSpeed
+    {
+        get { return this.world_speed; }
+    }
+
     [SerializeField]
     private GameObject start1;                  // スタート演出オブジェクトその1
     [SerializeField]
-    private float start1_wait_time = 3.0f;      // スタート演出オブジェクトその1を生成した後の待機時間
+    private float start1_wait_time = 0.0f;      // スタート演出オブジェクトその1を生成した後の待機時間
     [SerializeField]
     private GameObject start2;                  // スタート演出オブジェクトその2
     [SerializeField]
-    private float start2_wait_time = 1.0f;      // スタート演出オブジェクトその2を生成した後の待機時間
+    private float start2_wait_time = 0.0f;      // スタート演出オブジェクトその2を生成した後の待機時間
     [SerializeField]
     private GameObject gameover;                // ゲームオーバー演出オブジェクト
     [SerializeField]
-    private float gameover_wait_time = 2.0f;    // ゲームオーバー演出オブジェクトを生成した後の待機時間
+    private float gameover_wait_time = 0.0f;    // ゲームオーバー演出オブジェクトを生成した後の待機時間
     [SerializeField]
-    private float cycle = 5.0f;                 // 世界全体のスピードが加速するサイクル(秒数)
+    private float cycle = 0.0f;                 // 世界全体のスピードが加速するサイクル(秒数)
     [SerializeField]
-    private float accele = 0.01f;               // 世界全体のスピードの加速度
+    private float accele = 0.0f;               // 世界全体のスピードの加速度
     private float timer = 0.0f;                 // 経過時間
     [SerializeField]
-    private float food_cycle_trans = 0.05f;     // 食べ物生成間隔の変動値
+    private float food_cycle_trans = 0.0f;     // 食べ物生成間隔の変動値
     [SerializeField]
-    private float poison_cycle_trans = 0.1f;    // 毒生成間隔の変動値
+    private float poison_cycle_trans = 0.0f;    // 毒生成間隔の変動値
 
     #region シーン遷移用変数(by藤原康平)
     private Transition _TransitionObject;
@@ -121,8 +129,7 @@ public class PlayManager : MonoBehaviour {
         Instantiate(gameover, gameover.transform.position, transform.rotation);
         yield return new WaitForSeconds(gameover_wait_time);
         
-        // リザルトへ
-        // ----------------
+        // リザルトへ遷移
         #region シーン遷移などの処理(by藤原康平)
         //  ゲーム全体で使う変数に数値を入れる処理
         _TransitionObject.PlayerWeight = GameObject.Find("Player").GetComponent<PlayerManager>().Weight;
@@ -130,7 +137,6 @@ public class PlayManager : MonoBehaviour {
 
         // シーン移動実行
         _TransitionObject.SendMessage("StartFade","Result");
-        
         #endregion 
         yield return null;
     }

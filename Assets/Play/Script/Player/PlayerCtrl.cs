@@ -9,19 +9,18 @@
 // -------------------------------------------------------
 
 using UnityEngine;
-using System.Collections;
 
 public class PlayerCtrl : MonoBehaviour {
 
-    private PlayManager play_mgr;           // プレイマネージャースクリプト
+    private PlayManager play_mgr;           // プレイマネージャー
     [SerializeField]
-    private float speed = 1.0f;             // 左右の移動スピード
+    private float speed = 0.0f;             // 左右の移動スピード
     private CharacterController controller; // キャラクターコントローラー
 
     // Use this for initialization
     void Start()
     {
-        play_mgr = GameObject.Find("PlayManager").GetComponent<PlayManager>();  // プレイマネージャースクリプト取得
+        play_mgr = GameObject.Find("PlayManager").GetComponent<PlayManager>();  // プレイマネージャー取得
         controller = GetComponent<CharacterController>();                       // キャラクターコントローラー取得
     }
 

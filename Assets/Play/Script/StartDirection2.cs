@@ -9,16 +9,15 @@
 // -------------------------------------------------------
 
 using UnityEngine;
-using System.Collections;
 
 public class StartDirection2 : MonoBehaviour {
 
     [SerializeField]
-    private float raise_speed = 0.2f;   // 上昇速度
+    private float raise_speed = 0.0f;   // 上昇速度
     [SerializeField]
-    private float wait_height = 4.0f;   // 待機する高さ
+    private float wait_height = 0.0f;   // 待機する高さ
     [SerializeField]
-    private float wait_time = 1.0f;     // 待機する秒数
+    private float wait_time = 0.0f;     // 待機する秒数
     private float time = 0.0f;          // 経過時間
 
 	// Use this for initialization

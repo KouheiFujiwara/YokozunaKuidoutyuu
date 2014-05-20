@@ -39,25 +39,25 @@ public class PlayerLevel : MonoBehaviour {
         if ((level != level_scl.Length - 1) &&
             GetComponent<PlayerManager>().Weight >= level_weight[level]) LevelUP();
         if ((level != 0) &&
-            (GetComponent(typeof(PlayerManager)) as PlayerManager).Weight < level_weight[level - 1]) LevelDown();
+            GetComponent<PlayerManager>().Weight < level_weight[level - 1]) LevelDown();
     }
 
     // レベルUP関数
-    void LevelUP()
+    private void LevelUP()
     {
         ++level;
         ChangeScl();
     }
 
     // レベルDOWN関数
-    void LevelDown()
+    private void LevelDown()
     {
         --level;
         ChangeScl();
     }
 
     // 大きさ変更関数
-    void ChangeScl()
+    private void ChangeScl()
     {
         // プレイヤーのスケールをレベルに応じた倍率分変更
         transform.localScale = first_scl * level_scl[level];

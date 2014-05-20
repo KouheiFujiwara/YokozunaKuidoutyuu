@@ -9,12 +9,11 @@
 // -------------------------------------------------------
 
 using UnityEngine;
-using System.Collections;
 
 public class StartDirection1 : MonoBehaviour {
 
     [SerializeField]
-    private float fall_speed = 0.1f;    // 落ちる速度
+    private float fall_speed = 0.0f;    // 落ちる速度
 
 	// Use this for initialization
 	void Start ()
