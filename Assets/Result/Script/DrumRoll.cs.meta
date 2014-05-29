@@ -2,8 +2,7 @@ fileFormatVersion: 2
 guid: 8f212c05299d0e547b618f85a195bf1c
 MonoImporter:
   serializedVersion: 2
-  defaultReferences:
-  - AlphaPlane: {fileID: 2800000, guid: d3e595e89d10bd94c9443c1124f3b49d, type: 3}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

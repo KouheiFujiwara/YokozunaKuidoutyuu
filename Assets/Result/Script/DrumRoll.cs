@@ -1,8 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+// 現在使われてないスクリプト
 public class DrumRoll : MonoBehaviour {
 
+    // 数字の画像の配列
 	[SerializeField]
 	private Texture2D[] mat = null;
 

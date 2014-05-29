@@ -60,7 +60,7 @@ public class PlayManager : MonoBehaviour {
 	void Start()
     {
         #region シーン遷移用オブジェクトのGetComponent(by藤原康平)
-        _TransitionObject = GameObject.Find("Transition").GetComponent<Transition>();
+        if (GameObject.Find("Transition")) _TransitionObject = GameObject.Find("Transition").GetComponent<Transition>();
         #endregion
 
         // スタート演出関数を開始
@@ -71,7 +71,6 @@ public class PlayManager : MonoBehaviour {
 	void Update()
     {
         // スタートシーケンスの場合のみ以下の処理を行う
-        if (seq == SeqType.SEQ_PLAY)
         {
             // 一定時間毎に世界全体のスピードを加速させ、食べ物と毒の生成サイクルを変動させる
             timer += Time.deltaTime;
@@ -125,12 +124,14 @@ public class PlayManager : MonoBehaviour {
         // ----------------
         #region シーン遷移などの処理(by藤原康平)
         //  ゲーム全体で使う変数に数値を入れる処理
-        _TransitionObject.PlayerWeight = GameObject.Find("Player").GetComponent<PlayerManager>().Weight;
-        _TransitionObject.PlayerMileage = (int)GameObject.Find("Player").GetComponent<PlayerManager>().Mileage;
+        if (GameObject.Find("Transition"))
+        {
+            _TransitionObject.PlayerWeight = GameObject.Find("Player").GetComponent<PlayerManager>().Weight;
+            _TransitionObject.PlayerMileage = (int)GameObject.Find("Player").GetComponent<PlayerManager>().Mileage;
 
-        // シーン移動実行
-        _TransitionObject.SendMessage("StartFade","Result");
-        
+            // シーン移動実行
+            _TransitionObject.SendMessage("StartFade", "Result");
+        }
         #endregion 
         yield return null;
     }
